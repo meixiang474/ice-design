@@ -1,0 +1,30 @@
+.alert{
+  display: flex;
+  justify-content: space-between;
+  padding: $btn-padding-y $btn-padding-x;
+  border-radius: $btn-border-radius;
+  font-size: $btn-font-size;
+  position: relative;
+  color: $white;
+}
+.alert .alert-title {
+  font-size: $btn-font-size-lg;
+  font-weight: $font-weight-bold;
+}
+.alert .alert-close {
+  height: 24px;
+  cursor: pointer;
+}
+.alert-success {
+  @include alert-style($success)
+}
+.alert-default {
+  @include alert-style($primary)
+}
+.alert-danger {
+  @include alert-style($danger)
+}
+.alert-warning {
+  @include alert-style($warning);
+  color: $gray-600;
+}
