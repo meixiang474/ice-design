@@ -1,24 +1,19 @@
 import React from 'react';
-import Menu from './components/Menu/menu'
-import MenuItem from './components/Menu/menuItem'
-import SubMenu from './components/Menu/subMenu'
+import Tab from './components/Tab/tab'
+import TabItem from './components/Tab/tabItem'
+
 const App: React.FC = () => {
   return (
     <div className="App">
       <h1>111</h1>
-      <Menu defaultIndex="0" mode="vertical" onSelect={(e) => console.log(e)} defaultOpenSubMenus={['2']}>
-        <MenuItem index="1">
-          cool lin1
-        </MenuItem>
-        <MenuItem index="0">
-          cool link
-        </MenuItem>
-        <SubMenu title="2">
-          <MenuItem>
-           111
-          </MenuItem>
-        </SubMenu>
-      </Menu>
+      <Tab onSelect={(v) => console.log(v)}>
+        <TabItem label="1">
+          111
+        </TabItem>
+        <TabItem label="2">
+          222
+        </TabItem>
+      </Tab>
       <header className="App-header">
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
