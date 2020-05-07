@@ -4,11 +4,12 @@ import TabItem from './tabItem'
 import {fireEvent, RenderResult, render, cleanup} from '@testing-library/react'
 
 const defaultProps: TabProps = {
-  onSelect: jest.fn()
+  onSelect: jest.fn(),
+  className: 'test'
 }
 
 const verticalProps: TabProps = {
-  mode: 'vertical'
+  mode: 'vertical',
 }
 
 const generateTab= (props: TabProps): JSX.Element => (
@@ -58,6 +59,7 @@ describe('test Tab component', () => {
   })
   it('should render correct tab based on defaultProps', () => {
     expect(TabElement).toBeInTheDocument()
+    expect(TabElement).toHaveClass('test')
     expect(TabElement).toHaveClass('tab-horizental')
     expect(TabItemElement).toHaveClass('current')
     expect(DisabledElement).toHaveClass('disabled')

@@ -1,22 +1,21 @@
 import React from 'react';
-import Tab from './components/Tab/tab'
-import TabItem from './components/Tab/tabItem'
+import Menu from './components/Menu/menu'
+import MenuItem from './components/Menu/menuItem'
+import SubMenu from './components/Menu/subMenu'
+import Icon from './components/Icon/icon'
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <h1>111</h1>
-      <Tab onSelect={(v) => console.log(v)} mode="vertical">
-        <TabItem label="1">
-          111
-        </TabItem>
-        <TabItem label="2">
-          222
-        </TabItem>
-        <TabItem label="3" disabled>
-          333
-        </TabItem>
-      </Tab>
+      <Icon icon="coffee" theme="danger" size="10x"/>
+      <Menu>
+        <SubMenu title="123">
+          <MenuItem>
+            123
+          </MenuItem>
+        </SubMenu>
+      </Menu>
       <header className="App-header">
         <p>
           Edit <code>src/App.tsx</code> and save to reload.

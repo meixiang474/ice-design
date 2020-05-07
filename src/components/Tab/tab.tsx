@@ -8,7 +8,8 @@ type TabStyle = 'card' | 'tab'
 export interface TabProps {
   defaultIndex?: number,
   mode?: TabMode,
-  onSelect?: (index: number) => any
+  onSelect?: (index: number) => any,
+  className?: string
 }
 
 export interface ITabContext {
@@ -25,12 +26,13 @@ const Tab: React.FC<TabProps> = props => {
     defaultIndex,
     mode,
     children,
-    onSelect
+    onSelect,
+    className
   } = props
 
   const [currentActive, setActive] = useState(defaultIndex)
 
-  const classes = classNames('viking-tab', {
+  const classes = classNames('viking-tab', className, {
     [`tab-${mode}`]: mode
   })
 
