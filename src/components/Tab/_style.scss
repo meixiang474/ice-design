@@ -1,12 +1,12 @@
 .viking-tab{
   &.tab-horizental{
-    .tab-header {
+    >.tab-header {
       list-style: none;
       display: flex;
       flex-wrap: nowrap;
       padding: 0 30px;
       align-items: center;
-      .tab-item {
+      >.tab-item {
         min-width: 50px;
         margin-right: 30px;
         text-align: center;
@@ -17,6 +17,51 @@
           color: $primary;
           border-bottom-color: $primary;
         }
+        &.disabled {
+          color: $gray-500;
+          border-bottom-color: transparent;
+          pointer-events: none;
+        }
+      }
+    }
+    >.tab-body {
+      padding: 20px 30px;
+      display: none;
+      &.current {
+        display: block;
+      }
+    }
+  }
+  &.tab-vertical {
+    display: flex;
+    >.tab-header{
+      list-style: none;
+      padding: 10px 30px;
+      >.tab-item {
+        min-height: 50px;
+        padding: 0 10px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-left: 2px solid transparent;
+        cursor: pointer;
+        &.current, &:hover {
+          color: $primary;
+          border-left-color: $primary;
+        }
+        &.disabled {
+          color: $gray-500;
+          border-left-color: transparent;
+          pointer-events: none;
+        }
+      }
+    }
+    >.tab-body {
+      padding-top: 30px;
+      display: none;
+      &.current {
+        display: block;
       }
     }
   }

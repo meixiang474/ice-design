@@ -6,12 +6,15 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <h1>111</h1>
-      <Tab onSelect={(v) => console.log(v)}>
+      <Tab onSelect={(v) => console.log(v)} mode="vertical">
         <TabItem label="1">
           111
         </TabItem>
         <TabItem label="2">
           222
+        </TabItem>
+        <TabItem label="3" disabled>
+          333
         </TabItem>
       </Tab>
       <header className="App-header">

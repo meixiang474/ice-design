@@ -2,13 +2,12 @@ import React, {useState} from 'react'
 import classNames from 'classnames'
 import {TabItemProps} from './tabItem'
 
-type TabMode = 'verticle' | 'horizental'
+type TabMode = 'vertical' | 'horizental'
 type TabStyle = 'card' | 'tab'
 
 export interface TabProps {
   defaultIndex?: number,
   mode?: TabMode,
-  style?: TabStyle,
   onSelect?: (index: number) => any
 }
 
@@ -25,7 +24,6 @@ const Tab: React.FC<TabProps> = props => {
   const {
     defaultIndex,
     mode,
-    style,
     children,
     onSelect
   } = props
@@ -33,8 +31,7 @@ const Tab: React.FC<TabProps> = props => {
   const [currentActive, setActive] = useState(defaultIndex)
 
   const classes = classNames('viking-tab', {
-    [`tab-${mode}`]: mode,
-    [`tab-${style}`]: style
+    [`tab-${mode}`]: mode
   })
 
   const handleClick = (index: number): void => {
@@ -53,7 +50,7 @@ const Tab: React.FC<TabProps> = props => {
       const current = childElement.props.index || index
       const grandChildren = childElement.props.children
       const bodyClasses = classNames('tab-body', {
-        'current': currentActive === current
+        'current': currentActive === current && !childElement.props.disabled
       })
       return (
         <div className={bodyClasses}>
@@ -90,7 +87,6 @@ const Tab: React.FC<TabProps> = props => {
 Tab.defaultProps = {
   defaultIndex: 0,
   mode: 'horizental',
-  style: 'tab',
   onSelect: (index: number): any => {} 
 }
 

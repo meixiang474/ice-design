@@ -4,7 +4,8 @@ import classNames from 'classnames'
 
 export interface TabItemProps {
   index?: number,
-  label: string,
+  label: React.ReactNode,
+  disabled?: boolean,
   children?: React.ReactNode
 }
 
@@ -12,6 +13,7 @@ const TabItem: React.FC<TabItemProps> = props => {
   const {
     index,
     label,
+    disabled
   } = props
 
   const {
@@ -20,10 +22,12 @@ const TabItem: React.FC<TabItemProps> = props => {
   } = useContext(TabContext)
 
   const classes = classNames('tab-item', {
-    'current': currentActive === index
+    'current': currentActive === index && !disabled,
+    'disabled': disabled
   })
 
-  const handleClick = (): void => {
+  const handleClick = (e: React.MouseEvent): void => {
+    e.preventDefault()
     onSelect!(index!)
   }
 
@@ -33,6 +37,10 @@ const TabItem: React.FC<TabItemProps> = props => {
     </li>
   )
 
+}
+
+TabItem.defaultProps = {
+  disabled: false
 }
 
 TabItem.displayName = 'TabItem'
