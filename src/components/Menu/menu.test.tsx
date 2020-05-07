@@ -36,26 +36,11 @@ const generateMenu = (props: MenuProps) => {
   )
 }
 
-const createStyleFile = () => {
-  const cssFile: string = `
-    .viking-submenu {
-      display: none;
-    }
-    .viking-submenu.menu-opened {
-      display: block;
-    }
-  `
-  const style = document.createElement('style')
-  style.type = 'text/css'
-  style.innerHTML = cssFile
-  return style
-}
 
 let wrapper: RenderResult, menuElement: HTMLElement, activeElement: HTMLElement, disabledElement:HTMLElement
 describe('test Menu and MenuItem component', () => {
   beforeEach(() => {
     wrapper = render(generateMenu(testProps))
-    wrapper.container.appendChild(createStyleFile())
     menuElement = wrapper.getByTestId('test-menu')
     activeElement = wrapper.getByText('active')
     disabledElement = wrapper.getByText('disabled')
@@ -84,7 +69,7 @@ describe('test Menu and MenuItem component', () => {
     expect(menuElement).toHaveClass('menu-vertical')
   }) 
   it('should show dropdown items when hover on subMenu', async () => {
-    expect(wrapper.getByText('drop1')).not.toBeVisible()
+    expect(wrapper.queryByText('drop1')).not.toBeInTheDocument()
     const dropdownElement = wrapper.getByText('dropdown')
     fireEvent.mouseEnter(dropdownElement)
     await wait(() => {
@@ -94,7 +79,7 @@ describe('test Menu and MenuItem component', () => {
     expect(testProps.onSelect).toHaveBeenCalledWith('3-0')
     fireEvent.mouseLeave(dropdownElement)
     await wait(() => {
-      expect(wrapper.getByText('drop1')).not.toBeVisible()
+      expect(wrapper.queryByText('drop1')).not.toBeInTheDocument()
     })
   }) 
 })

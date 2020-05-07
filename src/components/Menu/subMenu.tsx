@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react'
 import classNames from 'classnames'
+import Transition from '../Transition/transition'
 import {MenuContext} from './menu'
 import {MenuItemProps} from './menuItem'
 import Icon from '../Icon/icon'
@@ -65,9 +66,15 @@ const SubMenu: React.FC<SubMenuProps> = props => {
       console.error("Warning : SubMenu has a child which is not a MenuItem")
     })
     return (
-      <ul className={subMenuClasses}>
-        {childrenComponent}
-      </ul>
+      <Transition
+        in={menuOpen}
+        timeout={300}
+        animation="zoom-in-top"
+      >
+        <ul className={subMenuClasses}>
+          {childrenComponent}
+        </ul>
+      </Transition>
     )
   }
 

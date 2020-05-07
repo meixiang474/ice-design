@@ -9,7 +9,7 @@ const App: React.FC = () => {
     <div className="App">
       <h1>111</h1>
       <Icon icon="coffee" theme="danger" size="10x"/>
-      <Menu>
+      <Menu mode="vertical" defaultOpenSubMenus={['0']}>
         <SubMenu title="123">
           <MenuItem>
             123
