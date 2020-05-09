@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import classNames from 'classnames'
+import Transition from '../Transition/transition'
+import Icon from '../Icon/icon'
 
 export type AlertType = 'success' | 'danger' | 'default' | 'warning'
 
@@ -36,32 +38,41 @@ const Alert: React.FC<AlertProps> = (props) => {
     setVisible(false)
   }
 
-  return visible ? (
-    <div
-      className={classes}
-      {...restProps}
-    >
-      <div className="alert-content">
+  return  (
+    <Transition
+      in={visible}
+      timeout={300}
+      animation="zoom-in-top"
+    >    
+      <div
+        className={classes}
+        {...restProps}
+      >
+        <div className="alert-content">
+          {
+            title && (
+              <div className="alert-title">
+                {title}
+              </div>
+            )
+          }
+          <div className="alert-children">
+            {children}
+          </div>
+        </div>
         {
-          title && (
-            <div className="alert-title">
-              {title}
-            </div>
+          closable && (
+          <div className="alert-close" onClick={handleClick}>
+            <Icon
+              icon="times"
+              style={{color: '#fff'}}
+            />
+          </div>
           )
         }
-        <div className="alert-children">
-          {children}
-        </div>
       </div>
-      {
-        closable && (
-        <div className="alert-close" onClick={handleClick}>
-          关闭
-        </div>
-        )
-      }
-    </div>
-  ) : null
+    </Transition>
+  ) 
 }
 
 Alert.defaultProps = {
