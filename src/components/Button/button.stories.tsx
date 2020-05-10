@@ -11,14 +11,14 @@ const defaultButton = () => (
 
 const buttonWithSize = () => (
   <div>
-    <Button size="lg">large button</Button>
+    <Button size="lg" style={{marginRight: '30px'}}>large button</Button>
     <Button size="sm">small button</Button>
   </div>
 )
 
 const buttonWithType = () => (
   <div>
-    <Button btnType="primary">primary button</Button>
+    <Button btnType="primary" style={{marginRight: '20px'}}>primary button</Button>
     <Button btnType="danger">danger button</Button>
     <Button btnType="link" href="#">link button</Button>
   </div>
@@ -26,5 +26,5 @@ const buttonWithType = () => (
 
 storiesOf('Button Component', module)
   .add('Button', defaultButton)
-  .add('不同尺寸的button', buttonWithSize)
-  .add('不同类型的button', buttonWithType)
+  .add('不同尺寸的Button', buttonWithSize)
+  .add('不同类型的Button', buttonWithType)

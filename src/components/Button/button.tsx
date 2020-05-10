@@ -1,7 +1,7 @@
 import React, {
   FC,
   ButtonHTMLAttributes,
-  AnchorHTMLAttributes
+  AnchorHTMLAttributes,
 } from 'react'
 import classNames from 'classnames'
 
@@ -18,7 +18,7 @@ interface BaseButtonProps {
   /**设置Button的类型 */
   btnType?: ButtonType;
   children: React.ReactNode;
-  href?: string
+  href?: string;
 }
 
 type NativeButtonProps = BaseButtonProps &ButtonHTMLAttributes<HTMLElement>
@@ -74,7 +74,6 @@ export const Button: FC<ButtonProps> = props => {
 Button.defaultProps = {
   disabled: false,
   btnType: 'default',
-  size: 'lg'
 }
 
 export default Button;

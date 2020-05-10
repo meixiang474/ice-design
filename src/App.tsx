@@ -21,7 +21,7 @@ const App: React.FC = () => {
           </MenuItem>
         </SubMenu>
       </Menu>
-      <Button onClick={() => setShow(!show)}>
+      <Button onClick={(e) => setShow(!show)}>
         toggle
       </Button>
       <Transition
