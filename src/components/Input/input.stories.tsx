@@ -1,7 +1,7 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 import {action} from '@storybook/addon-actions'
-import Input from './input'
+import {Input} from './input'
 
 const defaultInput = (): React.ReactElement => (
   <Input 
